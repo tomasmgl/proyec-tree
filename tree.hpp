@@ -25,7 +25,7 @@ class Tree
         void clear() { _root = clear(_root); }
 
         void operator=(const Tree<T> &);
-        void insert(Lista<NodeN<T>*>&);
+        void insert(Lista<T>&);
 
     private:
 		    NodeN<T>* copyTree(NodeN<T>*) const;
@@ -113,16 +113,18 @@ NodeN<T>* Tree<T>::clear(NodeN<T>* p)
 }
 
 template<class T>
-void Tree<T>::insert(Lista<NodeN<T>*> &L)
+void Tree<T>::insert(Lista<T> &L)
 {
     NodeN<T> *nuevo;
     int i = 0;
     bool band;
+
+
     while(!L.es_vacia())
     {
       band = false;
       i++;
-      nuevo = L.frente();
+      nuevo = new NodeN<T>(L.frente());
       L.eliminar_pri();
       nuevo->setKey2(i);
       _insert(nuevo, this->_root, band);
