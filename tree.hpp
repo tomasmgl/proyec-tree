@@ -17,8 +17,8 @@ class Tree
         Tree(T e) : _root(new NodeN<T>(e)) { };
         Tree(T, Lista<Tree<T> >);
         ~Tree() { _root = clear(_root); };
-
-        bool null() const { return _root == NULL; }
+        bool isLeaf() {return (this->_root->getLeft() == NULL);}
+        bool null() const {return _root == NULL;}
         void push(Tree<T>);
         Lista<Tree<T> > children() const;
 
